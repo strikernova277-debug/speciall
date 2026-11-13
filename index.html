@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>For You ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- BACKGROUND MUSIC (AUTOPLAY ENABLED) -->
+  <audio id="bg-music" autoplay loop preload="auto" playsinline>
+    <source src="song.mp3" type="audio/mpeg" />
+  </audio>
+  <button id="music-toggle" class="music-btn" title="Play/Pause Song">🎵</button>
+
+  <!-- SMART AUTOPLAY FALLBACK OVERLAY -->
+  <div id="autoplay-overlay" class="autoplay-overlay">
+    <div class="overlay-card">
+      <div class="overlay-heart">💌</div>
+      <h3>A Special Surprise For You</h3>
+      <p>Tap anywhere to start with music 🎵</p>
+    </div>
+  </div>
+
+  <!-- SCENE 1: Bow & Arrow + Heart -->
+  <section id="scene-1" class="scene active">
+    <p class="top-subtitle">someone made this, just for you</p>
+
+    <div class="heart-zone" id="heart-zone">
+      <div class="glow-circle"></div>
+      <div class="main-heart" id="target-heart">💗</div>
+      <div class="hit-message" id="hit-message">
+        <h2>Still you. Always you.</h2>
+        <span>— Always</span>
+      </div>
+    </div>
+
+    <div class="bow-wrapper" id="bow-wrapper">
+      <svg id="bow-svg" viewBox="0 0 130 130">
+        <path d="M 30 20 Q 10 65 95 105" stroke="#4a2c2a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <polyline id="bow-string" points="30,20 45,62 95,105" stroke="#8c6d62" stroke-width="1.8" fill="none"/>
+        <g id="arrow-group">
+          <line x1="35" y1="75" x2="88" y2="22" stroke="#d4a373" stroke-width="3" />
+          <polygon points="92,18 80,22 88,30" fill="#e63946" />
+          <polygon points="32,78 40,76 34,70" fill="#e63946" />
+        </g>
+      </svg>
+    </div>
+
+    <p class="bottom-hint" id="bow-hint">TAP BOW TO SHOOT ❤️</p>
+  </section>
+
+  <!-- SCENE 2: Pink "I Love You" Screen -->
+  <section id="scene-2" class="scene">
+    <div class="love-text-wrap">
+      <p class="small-italic">this one is for you...</p>
+      <h1 class="cursive-love">I Love<br>You</h1>
+      <svg class="gold-underline" viewBox="0 0 240 30">
+        <path d="M10 15 Q 120 5 230 15 Q 120 25 35 18" fill="none" stroke="#ffd166" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p class="bottom-sub">to the best thing that ever happened to me</p>
+    </div>
+  </section>
+
+  <!-- SCENE 3: Heart-Shaped Tree -->
+  <section id="scene-3" class="scene">
+    <div class="tree-card">
+      <p class="card-tag">made for you, by hand</p>
+      <h2>I love you</h2>
+      <p class="card-sub">and every ordinary day with you</p>
+    </div>
+    <canvas id="tree-canvas"></canvas>
+    <p class="bottom-hint" id="tree-hint">tap anywhere to continue →</p>
+  </section>
+
+  <!-- SCENE 4: Gift Box & Heavy Falling Roses -->
+  <section id="scene-4" class="scene">
+    <div class="gift-container" id="gift-box">
+      <div class="sketch-gift" id="sketch-gift">
+        <div class="gift-bow">🎀</div>
+        <div class="gift-lid"></div>
+        <div class="gift-body"></div>
+      </div>
+      <h2 class="gift-title">For you, Love.</h2>
+      <p class="gift-tap">(tap to open)</p>
+    </div>
+    <div id="roses-container"></div>
+  </section>
+
+  <!-- SCENE 5: "From me to you" + 3 Polaroid Photos -->
+  <section id="scene-5" class="scene">
+    <div class="intro-couple" id="intro-couple">
+      <h1 class="script-heading">From me to you.</h1>
+      <p class="couple-sub">This is how much I love you.</p>
+      <div class="couple-art">👩‍❤️‍👨</div>
+    </div>
+
+    <div class="polaroid-stage" id="polaroid-stage">
+      <div class="polaroid-grid">
+        <div class="polaroid p1">
+          <img class="user-photo-1" src="" alt="Memory 1">
+        </div>
+        <div class="polaroid p2">
+          <img class="user-photo-2" src="" alt="Memory 2">
+        </div>
+        <div class="polaroid p3">
+          <img class="user-photo-3" src="" alt="Memory 3">
+        </div>
+      </div>
+      <div class="polaroid-footer">
+        <h3 class="script-Callout">See what I built for you</h3>
+        <div class="bee-icon">🐝</div>
+        <p class="tap-go-in" id="go-to-museum">tap anywhere to go in</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 6: The Museum Door (Knock 3 Times) -->
+  <section id="scene-6" class="scene">
+    <div class="museum-header">
+      <span class="invite-pill">💌 Someone invited you to enter</span>
+      <p class="closed-note">CLOSED TO EVERYONE. EXCEPT YOU.</p>
+      <h2>I built you a <span class="highlight-box">museum.</span></h2>
+      <p class="knock-rule">Knock three times. That's the rule.</p>
+    </div>
+
+    <div class="door-frame">
+      <div class="door-inside">
+        <h3>Come in, Love.</h3>
+        <p>4 rooms, and every one of them is about you.</p>
+      </div>
+      <div class="door-panel" id="door-panel">
+        <div class="door-sign">
+          <strong>The Museum of Us</strong>
+          <span>one visitor only</span>
+        </div>
+        <div class="door-knocker" id="door-knocker">
+          <div class="knocker-ring"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="knock-dots">
+      <span class="k-dot" id="dot-1"></span>
+      <span class="k-dot" id="dot-2"></span>
+      <span class="k-dot" id="dot-3"></span>
+    </div>
+    <p class="knock-status" id="knock-status">Waiting for 3 knocks...</p>
+  </section>
+
+  <!-- SCENE 7: Room 1 - Scratch to See (3 Photos) -->
+  <section id="scene-7" class="scene">
+    <div class="room-wrapper">
+      <p class="room-tag">ROOM 1 · THE GALLERY</p>
+      <h2 class="room-title">Our <span class="highlight-soft">photos</span></h2>
+      <p class="room-desc">Each one is covered. Rub your finger or mouse across to see it.</p>
+
+      <div class="scratch-frame" id="scratch-frame">
+        <img id="scratch-img" src="" alt="Hidden Memory" />
+        <canvas id="scratch-canvas"></canvas>
+      </div>
+
+      <div class="exhibit-plaque">
+        <strong id="exhibit-title">Memory #1</strong>
+        <span id="exhibit-sub">EXHIBIT 1 · FROM OUR COLLECTION</span>
+      </div>
+
+      <div class="gallery-controls">
+        <button class="nav-arrow" id="prev-photo">←</button>
+        <span id="photo-counter">1 / 3</span>
+        <button class="nav-arrow" id="next-photo">→</button>
+      </div>
+
+      <button class="pink-btn" id="to-room-2">Keep walking →</button>
+    </div>
+  </section>
+
+  <!-- SCENE 8: Room 2 - 3x3 Photo Puzzle -->
+  <section id="scene-8" class="scene">
+    <div class="room-wrapper">
+      <p class="room-tag">ROOM 2 · THE RESTORATION DESK</p>
+      <h2 class="room-title">This photo fell <span class="highlight-soft">apart.</span></h2>
+      <p class="room-desc">Nine pieces. Tap two to swap them into place.</p>
+
+      <div class="puzzle-wrapper" id="puzzle-wrapper">
+        <div id="puzzle-board" class="puzzle-board"></div>
+        <img id="puzzle-peek-img" class="puzzle-peek-img" src="" alt="Preview" />
+      </div>
+
+      <div class="puzzle-stats">
+        <span class="stat-pill">Moves <b id="move-count">0</b></span>
+        <span class="stat-pill">⏱ <b id="timer-count">0:00</b></span>
+        <button class="stat-pill peek-btn" id="peek-btn">👁 Hold to peek</button>
+      </div>
+
+      <p id="puzzle-win-msg" class="puzzle-win-msg">Fixed it! Every piece is right where it belongs.</p>
+      <button class="pink-btn" id="to-room-3">Next room →</button>
+    </div>
+  </section>
+
+  <!-- SCENE 9: Room 3 - Sealed Envelope & Letter (No Voice Note) -->
+  <section id="scene-9" class="scene">
+    <div class="room-wrapper">
+      <p class="room-tag">ROOM 3 · THE READING ROOM</p>
+      <h2 class="room-title" id="letter-heading">A letter, sealed just for <span class="highlight-soft">you.</span></h2>
+
+      <div class="envelope-stage" id="envelope-stage">
+        <div class="envelope-box" id="envelope-box">
+          <div class="env-flap"></div>
+          <div class="wax-seal" id="wax-seal">❤️</div>
+        </div>
+        <p class="tap-seal-hint">tap the seal to open</p>
+      </div>
+
+      <div class="letter-paper-wrap" id="letter-paper-wrap">
+        <div class="letter-paper">
+          <p>Hey love ❤️</p>
+          <p>I don't think I tell you this enough, but meeting you has been one of the best things that's ever happened to me.</p>
+          <p>Thank you for being patient with me, making me laugh, listening to my endless talks, and loving me even on the days I'm difficult.</p>
+          <p>No matter how busy life gets, I hope you always remember one thing... you'll always be my favorite person. 🥺</p>
+          <p>I love you more than words can ever explain. ❤️</p>
+          <p class="letter-sign">— Yours Forever</p>
+        </div>
+
+        <div class="emoji-float">🥰</div>
+        <button class="pink-btn" id="to-room-4">One last room →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 10: Room 4 - The Promises -->
+  <section id="scene-10" class="scene">
+    <div class="room-wrapper">
+      <p class="room-tag">ROOM 4 · THE PROMISES</p>
+      <h2 class="room-title">Tick the ones you'll <span class="highlight-soft">hold on to.</span></h2>
+
+      <div class="promises-card" id="promises-card">
+        <h3>Our Promises</h3>
+        <p class="promise-sub">BETWEEN ME AND YOU</p>
+
+        <label class="promise-item">
+          <input type="checkbox" class="promise-check" checked />
+          <span>1. Never go to bed angry</span>
+        </label>
+        <label class="promise-item">
+          <input type="checkbox" class="promise-check" checked />
+          <span>2. Say the hard thing, gently</span>
+        </label>
+        <label class="promise-item">
+          <input type="checkbox" class="promise-check" checked />
+          <span>3. Always share the last bite</span>
+        </label>
+        <label class="promise-item">
+          <input type="checkbox" class="promise-check" checked />
+          <span>4. Choose you again, every ordinary morning</span>
+        </label>
+        <label class="promise-item">
+          <input type="checkbox" class="promise-check" checked />
+          <span>5. Pick you first. Every time.</span>
+        </label>
+
+        <!-- Wax Seal Stamp Animation on Card -->
+        <div class="stamp-seal" id="stamp-seal">
+          <span>SEALED<br>❤️<br>FOREVER</span>
+        </div>
+      </div>
+
+      <button class="pink-btn" id="make-official-btn">Make it official ❤️</button>
+    </div>
+  </section>
+
+  <!-- SCENE 11: NEW GRAND FINALE FOREVER PAGE -->
+  <section id="scene-11" class="scene">
+    <div id="finale-hearts-container"></div>
+
+    <div class="finale-card">
+      <div class="finale-seal-badge">💍 Officially Sealed</div>
+      <p class="finale-quote">
+        "In a world full of temporary things,<br>
+        you are my forever feeling.<br>
+        Every beat of my heart belongs to you, today and always."
+      </p>
+      <div class="finale-divider">✨ ❤️ ✨</div>
+      <h1 class="finale-love-title">I Love You<br><span>Forever & Always ♾️</span></h1>
+      <p class="finale-sub">You + Me = Till Infinity 💖</p>
+      <button class="replay-btn" id="replay-btn">Watch Again ↻</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
